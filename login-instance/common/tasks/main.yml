@@ -1,0 +1,24 @@
+---
+# This playbook contains common plays that will be run on all nodes.
+
+- name: Enable EPEL
+  yum: name=epel-release state=present
+
+- name: Install Ansible and Git and common utilities
+  yum: state=present name={{ item }}
+  with_items: 
+     - ansible
+     - git
+     - vim-enhanced
+     - screen
+     - tmux
+     - tmux
+
+- name: Enable OpenStack repo and install clients
+  yum: name=centos-release-openstack state=present
+
+- name: Install OpenStack clients
+  yum: name=python-openstack-client state=present
+
+- name: Update all packages
+  yum: name=* state=latest

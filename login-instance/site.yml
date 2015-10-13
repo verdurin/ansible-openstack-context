@@ -3,7 +3,7 @@
 
 - name: apply common configuration to all nodes
   hosts: local
-  gather-facts: no
+  gather_facts: no
   remote_user: root
   sudo: yes
 

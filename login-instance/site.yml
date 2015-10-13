@@ -6,7 +6,6 @@
   connection: local
   gather_facts: no
   remote_user: root
-  sudo: yes
 
   roles:
     - common

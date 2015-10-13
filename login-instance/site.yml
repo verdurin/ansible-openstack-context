@@ -2,8 +2,10 @@
 # Apply roles on this site
 
 - name: apply common configuration to all nodes
-  hosts: all
+  hosts: local
+  gather-facts: no
   remote_user: root
+  sudo: yes
 
   roles:
     - common

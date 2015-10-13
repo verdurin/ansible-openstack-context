@@ -1,0 +1,13 @@
+#!/bin/bash
+
+yum -y install git epel-release
+
+yum -y install ansible
+
+echo "Clone GitHub repo with Ansible playbooks"
+git clone https://github.com/verdurin/ansible-openstack-context.git /tmp/ansible
+
+pushd /tmp/ansible
+ansible-playbook ./login-instance/common/tasks/main.yml
+popd
+exit 0

@@ -1,0 +1,9 @@
+---
+# This playbook installs OpenStack REST API clients
+#
+
+- name: Enable OpenStack repo and install clients
+  yum: name=centos-release-openstack state=present
+
+- name: Install OpenStack clients
+  yum: name=python-openstackclient state=present

@@ -1,0 +1,9 @@
+---
+# Add extra network interfaces to instances 
+
+- name: Add network interfaces 
+  hosts: localhost
+
+  roles:
+   - networks
+

@@ -1,0 +1,15 @@
+---
+# This playbook connects to the public_api network
+# 
+
+- name: Request port and attach interface to instance
+  # load OpenStack credentials
+  # load variables e.g. network, tenant, instance ID
+  # neutron port-create...
+  # nova interface-attach
+
+- name: Add extra ethernet interface inside instance
+  action: template owner=root group=root mode=644 src=ifcfg-eth.j2 dest=/etc/sysconfig/network-scripts/ifcfg-\${item}
+  with_items: $net_interfaces
+  # Needs handler to load net interface e.g. systemctl restart network.service
+  #

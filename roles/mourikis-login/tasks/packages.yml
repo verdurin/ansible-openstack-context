@@ -1,0 +1,23 @@
+---
+# This playbook installs dependencies for the Van Loo group
+#
+- name: Enable EPEL
+  yum: name=epel-release state=present
+
+- name: Install Ansible and Git and common utilities
+  yum: state=present name={{ item }}
+  with_items:
+      - libibverbs
+      - libibverbs-devel
+      - pyOpenSSL
+      - openssl-devel
+      - tk-devel
+      - tcl-devel
+      - cairo
+      - cairo-devel
+
+- name: Install the 'Development tools' package group
+  yum: name="@Development tools" state=present
+
+- name: Install Lmod
+  yum: name=Lmod state=present 

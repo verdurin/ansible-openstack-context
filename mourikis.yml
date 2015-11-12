@@ -1,0 +1,11 @@
+---
+# Basic configuration
+
+- name: Add baseline packages
+  hosts: mourikis-test-1
+  user: centos
+  sudo: True
+
+  roles:
+   - mourikis-login
+

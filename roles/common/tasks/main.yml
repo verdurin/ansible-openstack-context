@@ -15,6 +15,14 @@
      - tcpdump
      - nc
      - emacs
+     - htop
+     - sysstat
+     - iotop
+  notify:
+   - Start sysstat  
+
+- name: systat service running
+  service: name=sysstat state=running enabled=yes
 
 - name: Update all packages
   yum: name=* state=latest

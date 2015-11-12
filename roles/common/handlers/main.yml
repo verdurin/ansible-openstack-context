@@ -1,0 +1,3 @@
+---
+- name: Start sysstat
+  service: name=sysstat state=restarted

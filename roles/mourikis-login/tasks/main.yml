@@ -19,5 +19,3 @@
 - name: Install the 'Development tools' package group
   yum: name="@Development tools" state=present
 
-- name: Install Lmod
-  yum: name=Lmod state=present 

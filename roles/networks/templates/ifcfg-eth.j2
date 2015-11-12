@@ -1,21 +1,19 @@
 DEVICE="{{ item }}"
-{%- if net_config[item].X_network is defined %}
-IPADDR="{{ networks[net_config[item].X_network].netrange }}.{{ net_config[item].X_hostipaddr }}"
-PREFIX="{{ networks[net_config[item].X_network].prefix }}"
-{%- endif %}
 {%- for key, value in net_config[item].items() %}
 {%- if (key[:2] != 'X_') %}
 {{ key|upper }}="{{ value }}"
 {%- endif %}
 {%- endfor %}
 
-DEVICE="eth1"
+DEVICE="{{ item }}"
 BOOTPROTO="static"
 ONBOOT="yes"
 TYPE="Ethernet"
 DEFROUTE=no
 NM_CONTROLLED=no
-IPADDR=10.0.42.227
-NETMASK=255.255.255.0
-GATEWAY=10.0.42.254
+{%- if net_config[item].X_network is defined %}
+IPADDR="{{ networks[net_config[item].X_network].netrange }}.{{ net_config[item].X_hostipaddr }}"
+NETMASK="{{ networks[net_config[item].X_network].netmask }}"
+GATEWAY="{{ networks[net_config[item].X_network].gateway }}"
+{%- endif %}
 IPV6INIT=no

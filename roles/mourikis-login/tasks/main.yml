@@ -15,6 +15,8 @@
       - tcl-devel
       - cairo
       - cairo-devel
+      - mesa-libGLU
+      - mesa-libGLU-devel
 
 - name: Install the 'Development tools' package group
   yum: name="@Development tools" state=present

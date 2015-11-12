@@ -16,11 +16,5 @@
      - nc
      - emacs
 
-- name: Enable OpenStack repo and install clients
-  yum: name=centos-release-openstack state=present
-
-- name: Install OpenStack clients
-  yum: name=python-openstackclient state=present
-
 - name: Update all packages
   yum: name=* state=latest

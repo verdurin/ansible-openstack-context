@@ -1,0 +1,5 @@
+---
+# Dependencies for the Bastion role
+
+dependencies:
+ - { role: common }

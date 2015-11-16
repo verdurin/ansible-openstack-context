@@ -1,0 +1,13 @@
+---
+# Basic configuration for Bastion node
+
+- name: Provision bastion node
+  hosts: admin-bastion
+  user: centos
+  sudo: True
+
+  roles:
+   - common
+   - bastion
+   - networks
+

@@ -1,0 +1,17 @@
+---
+# Create a Bastion host 
+
+- name: Add OpenStack repo and install clients
+  yum: name={{ item }} state=present
+  with_items:
+      - centos-openstack-release
+      - python-openstackclient
+
+- name: Install the 'Development tools' package group
+  yum: name="@Development tools" state=present
+
+- name: Add second network interface for API access
+  copy: src=ifcfg-eth1 dest=/etc/sysconfig/network-scripts/ifcfg-eth1 mode=0600
+  notify:
+   - restart network
+

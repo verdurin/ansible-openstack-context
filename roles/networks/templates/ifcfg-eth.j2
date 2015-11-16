@@ -1,19 +1,14 @@
-DEVICE="{{ item }}"
-{%- for key, value in net_config[item].items() %}
-{%- if (key[:2] != 'X_') %}
-{{ key|upper }}="{{ value }}"
-{%- endif %}
-{%- endfor %}
-
-DEVICE="{{ item }}"
-BOOTPROTO="static"
+DEVICE=eth"{{ item.device }}"
 ONBOOT="yes"
 TYPE="Ethernet"
 DEFROUTE=no
 NM_CONTROLLED=no
-{%- if net_config[item].X_network is defined %}
-IPADDR="{{ networks[net_config[item].X_network].netrange }}.{{ net_config[item].X_hostipaddr }}"
-NETMASK="{{ networks[net_config[item].X_network].netmask }}"
-GATEWAY="{{ networks[net_config[item].X_network].gateway }}"
+{% if item.bootprotocol == "dhcp" %}
+BOOTPROTO="dhcp"
+{% else %}
+BOOTPROTO=static
+IPADDR={{ item.ipaddr }}
+NETMASK={{ item.netmask }}
+GATEWAY=={{ item.gateway }}
 {%- endif %}
 IPV6INIT=no

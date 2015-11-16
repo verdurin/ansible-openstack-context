@@ -1,0 +1,10 @@
+---
+
+hostname: admin-bastion
+
+networks:
+    - device: eth1
+    - neutronnet: public_api
+    - ipaddr: 10.0.42.240
+    - netmask: 255.255.255.0
+    - gateway: 10.0.42.254
